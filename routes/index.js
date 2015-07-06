@@ -12,4 +12,13 @@ router.get('/', function(req, res) {
 router.get('/quizes/question', quizController.question);
 router.get('/quizes/answer', quizController.answer);
 
+/* Authors page */
+router.get('/author', function(req, res){
+	res.render('author',{
+		webDesigner: {nombre: 'Rafael de la Piñera Vázquez', foto: '/images/rafa.jpg'},
+		developer: {nombre: 'Rafael de la Piñera Vázquez', foto: '/images/rafa.jpg'},
+		databaseManager: {nombre: 'Rafael de la Piñera Vázquez', foto: '/images/rafa.jpg'},
+	});
+});
+
 module.exports = router;
