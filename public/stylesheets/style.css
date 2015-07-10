@@ -13,4 +13,7 @@ nav span 			{ margin: 0px 10px 0px 0px; }
 
 /* Authors */
 .author-list 		{ padding: 10px 50px; text-align: left; list-style: none; }
-.author-list li img  { border: 1px solid silver; box-shadow: 3px 3px 3px #333; margin-right: 5px; }
+.author-list li img { border: 1px solid silver; box-shadow: 3px 3px 3px #333; margin-right: 5px; }
+
+/* Question list */
+table.wide_all 		{ width: 100%; }
