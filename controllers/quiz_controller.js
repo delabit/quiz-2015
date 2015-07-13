@@ -55,9 +55,40 @@ exports.create = function(req, res){
 			res.render('quizes/new',{quiz: quiz, errors: err.errors});
 		}else{
 			// Guardamos en BD
-			quiz.save({fields: ["pregunta","respuesta"]}).then(function(){
-				res.redirect('/quizes');
-			});			
+			quiz
+			.save({fields: ["pregunta","respuesta"]})
+			.then(function(){res.redirect('/quizes');});
 		}
 	});
+};
+
+// POST /quizes/:quizId/edit
+exports.edit = function(req, res){
+	var quiz = req.quiz; //autoload (1º Middelware)
+	res.render('quizes/edit', {quiz: quiz, errors: []}); 
+};
+
+// PUT /quizes/:quizId
+exports.update = function(req, res){
+	req.quiz.pregunta = req.body.quiz.pregunta;
+	req.quiz.respuesta = req.body.quiz.respuesta;
+
+	req.quiz.validate().then(function(err){
+		if(err){
+			res.render('quizes/edit', {quiz: req.quiz, errors: err.errors});
+		}else{
+			req.quiz
+			.save({fields: ["pregunta","respuesta"]})
+			.then(function(){res.redirect('/quizes');});
+		}
+	});
+};
+
+//DELETE /quixes/:quizId
+exports.destroy = function(req, res){
+	req.quiz
+	.destroy()
+	.then(function(){
+		res.redirect('/quizes')
+	}).catch(function(error){next(error)});
 };
