@@ -5,7 +5,7 @@ var quizController = require('../controllers/quiz_controller');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Quiz' });
+  res.render('index', { title: 'Quiz' , errors: []});
 });
 
 // Autoload de rutas con quizId
@@ -20,11 +20,15 @@ router.post('/quizes/create', quizController.create);
 
 /* Authors page */
 router.get('/author', function(req, res){
-	res.render('author',{
-		webDesigner: {nombre: 'Rafael de la Piñera Vázquez', foto: '/images/rafa.jpg'},
-		developer: {nombre: 'Rafael de la Piñera Vázquez', foto: '/images/rafa.jpg'},
-		databaseManager: {nombre: 'Rafael de la Piñera Vázquez', foto: '/images/rafa.jpg'},
-	});
+	res.render(
+		'author',
+		{
+			webDesigner: {nombre: 'Rafael de la Piñera Vázquez', foto: '/images/rafa.jpg'},
+			developer: {nombre: 'Rafael de la Piñera Vázquez', foto: '/images/rafa.jpg'},
+			databaseManager: {nombre: 'Rafael de la Piñera Vázquez', foto: '/images/rafa.jpg'},
+			errors: []
+		}
+	);
 });
 
 module.exports = router;
