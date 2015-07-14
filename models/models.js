@@ -31,8 +31,10 @@ var sequelize = new Sequelize(
 );
 // Tabla Quiz
 var Quiz = sequelize.import(path.join(__dirname, 'quiz'))
-// Hacemos la tabla accesible
 exports.Quiz = Quiz;
+// Tabla Tema
+var Tema = sequelize.import(path.join(__dirname,'tema'));
+exports.Tema = Tema;
 
 sequelize.sync().success(function(){
 	Quiz.count().success(function(count){
@@ -46,22 +48,17 @@ sequelize.sync().success(function(){
 				pregunta: 'Capital de Portugal', 
 				respuesta: 'Lisboa',
 				tema: 'otro'
-			}).success(function(){console.log('Base de datos inicializada')});
+			}).success(function(){console.log('Tabla *Quiz* creada')});
 		}
 	});
-});
-
-// Tabla Tema
-var Tema = sequelize.import(path.join(__dirname,'tema'));
-exports.Tema = Tema;
-sequelize.sync().success(function(){
 	Tema.count().success(function(count){
 		if(count === 0){
 			Tema.create({valor: 'otro', etiqueta: 'Otro'});
 			Tema.create({valor: 'humanidades', etiqueta: 'Humanidades'});
 			Tema.create({valor: 'ocio', etiqueta: 'Ocio'});
 			Tema.create({valor: 'ciencia', etiqueta: 'Ciencia'});
-			Tema.create({valor: 'tecnologia', etiqueta: 'Tecnología'});
+			Tema.create({valor: 'tecnologia', etiqueta: 'Tecnología'})
+			.success(function(){console.log('Tabla *Tema* creada\nBase de datos inicializada')});
 		}
-	});
+	});	
 });

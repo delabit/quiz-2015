@@ -10,6 +10,7 @@ router.get('/', function(req, res) {
 
 // Autoload de rutas con quizId
 router.param('quizId',						quizController.load);
+
 // Autolad temas
 router.get('/quizes/new', 					quizController.loadTemas);
 router.get('/quizes/:quizId(\\d+)/edit',	quizController.loadTemas);
