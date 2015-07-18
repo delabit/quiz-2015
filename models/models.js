@@ -31,11 +31,21 @@ var sequelize = new Sequelize(
 );
 // Tabla Quiz
 var Quiz = sequelize.import(path.join(__dirname, 'quiz'))
-exports.Quiz = Quiz;
 // Tabla Tema
 var Tema = sequelize.import(path.join(__dirname,'tema'));
-exports.Tema = Tema;
+// Tabla Comments
+var Comment = sequelize.import(path.join(__dirname,'comment'));
 
+//Relaciones entre tablas
+Comment.belongsTo(Quiz);
+Quiz.hasMany(Comment);
+
+//Exportamos tablas
+exports.Quiz = Quiz;
+exports.Tema = Tema;
+exports.Comment = Comment;
+
+// Inicializamos bases de datos si está vacía
 sequelize.sync().success(function(){
 	Quiz.count().success(function(count){
 		if(count === 0){

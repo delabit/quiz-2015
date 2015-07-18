@@ -1,4 +1,4 @@
-// Tabla de las preguntas en BD
+// Tabla de los temas en BD
 
 module.exports = function(sequelize, DataTypes){
 	return sequelize.define(

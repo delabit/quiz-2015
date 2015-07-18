@@ -3,4 +3,13 @@
   <input name="respuesta" type="text" value="Responda aquí" />
   <input type="submit" value="Enviar" />
 </form>
-<p><a href="/quizes">Volver</a></p>
+<br>
+<!-- Comentarios -->
+<p><strong>Comentarios:</strong></p>
+<% for(var i in quiz.Comments){ %>
+	<p>- <%= quiz.Comments[i].texto %></p>
+<% } %>
+<p><a href="/quizes/<%= quiz.id %>/comments/new"><button>Nuevo comentario</button></a></p><br>
+
+<!-- Volver -->
+<p><a href="/quizes">Volver</a></p><br>
