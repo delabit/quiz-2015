@@ -7,7 +7,14 @@
 <!-- Comentarios -->
 <p><strong>Comentarios:</strong></p>
 <% for(var i in quiz.Comments){ %>
-	<p>- <%= quiz.Comments[i].texto %></p>
+	<% if(quiz.Comments[i].publicado || session.user){ %>
+		<p>- <%= quiz.Comments[i].texto %></p> 
+		<% if(session.user && !quiz.Comments[i].publicado){ %>
+			<a href="/quizes/<%= quiz.id %>/comments/<%= quiz.Comments[i].id %>/publish">
+				<button>Publicar</button>
+			</a>
+		<% } %>	
+	<% } %>
 <% } %>
 <p><a href="/quizes/<%= quiz.id %>/comments/new"><button>Nuevo comentario</button></a></p><br>
 
