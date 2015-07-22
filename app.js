@@ -41,6 +41,26 @@ app.use(function(req, res, next){
     next();
 });
 
+// Autologout (Session timeout - 2 min)
+app.use(function(req, res, next){
+    // si logueado
+    if(req.session.user){
+        // Comparramos tran. actual con la anterior
+        var currentTime = new Date().getTime();
+        var limit = 2 * 60 * 1000; // 2 min
+        var diff = currentTime - req.session.lastEvent;
+        if(diff > limit){
+            // logout
+            delete req.session.lastEvent;
+            res.redirect('/logout');
+        }else{
+            // Grabamos última transacción
+            req.session.lastEvent = new Date().getTime();   
+        }
+    }
+    next();
+});
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler
