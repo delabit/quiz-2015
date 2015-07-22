@@ -18,7 +18,19 @@ nav span 			{ margin: 0px 10px 0px 0px; }
 /* Question list */
 table.wide_all 		{ margin: 15px auto; }
 
+/* Estatistics */
+table.statistics	{ margin: 15px auto; 
+						text-align: left; 
+						font-size: smaller; 
+						border-radius: 5px; 
+						box-shadow: 5px 5px 5px #333;
+						border: 1px silver solid;
+						padding: 3px;
+					}
+table.statistics th { padding: 3px 10px; }
+table.statistics td { text-align: center; color: #888; font-size: large}
+
 /* Errors */
-#ErrorMsgs			{ color: #f61; font-size: smaller; }
+#ErrorMsgs			{ color: #f61; font-size: small; }
 
 .right				{ float: right; }

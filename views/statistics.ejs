@@ -1,0 +1,29 @@
+<h2>Stadísticas</h2>
+
+<table class="statistics">
+	<tr>
+		<th rowspan="2">Preguntas</th>
+		<th></th>
+		<th>Totales</th>
+		<th>Con comentarios</th>
+		<th>Sin comentarios</th>
+	</tr>
+	<tr>
+		<td></td>
+		<td><%= stats.nQuizes %></td>
+		<td><%= stats.nQuizesComment %></td>
+		<td><%= stats.nQuizesNoComment %></td>
+	</tr>
+	<tr>
+		<th rowspan="2">Comentarios</th>
+		<th></th>
+		<th>Totales</th>
+		<th>Media por pregunta</th>
+	</tr>
+	<tr>
+		<td></td>
+		<td><%= stats.nComments %></td>
+		<td><%= stats.medComments %></td>
+	</tr>
+
+</table>
